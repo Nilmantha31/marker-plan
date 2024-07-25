@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="inner-container" >
+    <div>
+      <h2>Marker Plan</h2>
+      <form nz-form [nzLayout]="'vertical'">
+
+        <!-- Dynamic size and quantity inputs -->
+
+        <div *ngFor="let size of sizes; let i = index">
+          <nz-form-item>
+            <nz-form-label [nzFor]="'size-quantities-' + size">Quantity for size {{size}}</nz-form-label>
+
+            <nz-form-control>
+              <input [id]="'size-quantities-'+size" nz-input type="number" [name]="'quantity-'+size"
+                [(ngModel)]="quantities[i]" placeholder="Enter quantity for size {{ size }}" name="size-quantities">
+            </nz-form-control>
+
+            <nz-form-control>
+              <button nz-button nzType="primary" (click)="removeSize()">Remove</button>
+            </nz-form-control>
+
+          </nz-form-item>
+        </div>
+
+        <!-- Add new size and quantity -->
+        <div>
+          <nz-form-item>
+            <nz-form-label>Add Size and Quantity</nz-form-label>
+            <nz-form-control>
+              <input nz-input type="text" placeholder="Size" [(ngModel)]="newSize" name="newSize">
+            </nz-form-control>
+            <nz-form-control>
+              <input nz-input type="number" placeholder="Quantity" [(ngModel)]="newQuantity" name="newQuantity">
+            </nz-form-control>
+            <nz-form-control>
+              <button nz-button nzType="primary" type="button" (click)="addSizeQuantity()">Add</button>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Get Marker Plan button -->
+        <nz-form-item>
+          <nz-form-control>
+            <button routerLink="/dispplaymarkerplan" nz-button nzType="primary"(click)="getMarkerPlans()">Get Marker Plan</button>
+          </nz-form-control>
+        </nz-form-item>
+
+      </form>
+
+    </div>
+  </div>
+</div>

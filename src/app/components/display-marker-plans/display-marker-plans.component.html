@@ -1,0 +1,30 @@
+
+<div *ngIf="markerPlanResults.mainSolution" class="result-section">
+  <!-- Loop through combined plans and create a table for each plan -->
+  <div *ngFor="let plan of combinedPlans" class="plan-section">
+    <h2 nz-typography>{{ plan.type }} Marker Plan</h2>
+    <div>
+      <p>Ply Count: {{ plan.plyCount }}</p>
+      <p>Cut Repeats: {{ plan.cutRepeats }}</p>
+    </div>
+    <nz-table [nzData]="[plan]" nzBordered>
+      <thead>
+      <tr>
+        <th>Sizes</th>
+        <th *ngFor="let size of sizes">{{ size }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Ratio</td>
+        <td *ngFor="let ratio of plan.ratio">{{ ratio }}</td>
+      </tr>
+      <tr>
+        <td>Balance</td>
+        <td *ngFor="let balance of plan.balance">{{ balance }}</td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
+
